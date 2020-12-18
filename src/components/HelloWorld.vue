@@ -27,6 +27,10 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+      <button v-copy="copyText">复制</button>
+      <button v-longpress="longpress">长按</button>
+      <button v-debounce="debounceClick">防抖</button>
+    <div class="copyright" v-waterMarker="{text:'版权所有',textColor:'#eee'}"></div>
   </div>
 </template>
 
@@ -35,6 +39,19 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      copyText: 'a copy directives',
+    }
+  },
+  methods: {
+    debounceClick() {
+      console.log('只触发一次')
+    },
+    longpress() {
+      console.log('长按指令生效')
+    },
   }
 }
 </script>
@@ -54,5 +71,14 @@ li {
 }
 a {
   color: #42b983;
+}
+button {
+  margin-right: 8px;
+}
+button:last {
+  margin-right: 0;
+}
+.copyright {
+  min-height: 500px;
 }
 </style>
